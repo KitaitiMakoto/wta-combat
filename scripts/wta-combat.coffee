@@ -63,9 +63,12 @@ formatEyes = (eyes, difficulty) ->
       marked.push "#{eye}"
   "[#{marked.join(', ')}]"
 
-$("#trigger").click (event) ->
+reset = ->
   $(".result").html("")
   $("#result").html("")
+
+$("#trigger").click (event) ->
+  reset()
   hitResult = hit()
   if hitResult.additionalPool < 0
     $("#result").html("Attack failured")
@@ -75,3 +78,6 @@ $("#trigger").click (event) ->
       $("#result").html("Attack soaked totally")
     else
       $("#result").html("Attack successed with <strong>#{damage}</strong> damages!")
+
+$('input[type="reset"]').click (event) ->
+  reset()
