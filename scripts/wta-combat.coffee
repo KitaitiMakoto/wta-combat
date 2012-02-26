@@ -39,13 +39,17 @@ calcDamage = (additionalPool, defenseBotched = false) ->
     selector += ", #soak"
   $(selector).each (index) ->
     $li = $(this)
-    dp = parseInt($li.find('[name="dicepool"]').val()) + additionalPool
+    attacking = ($li.attr("id") is "damage")
+    dp = parseInt($li.find('[name="dicepool"]').val())
+    dp += additionalPool if attacking
     dif = $li.find('[name="difficulty"]').val()
     doReroll = false
     res = roll(dp, dif, doReroll)
     texts = []
     texts.push "#{res.successes} successes"
     texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
+    if attacking and additionalPool > 0
+      texts.push "(<strong>#{additionalPool}</strong> dice enhanced)"
 
     damage += res.successes if $li.attr("id") is "damage"
     damage -= res.successes if $li.attr("id") is "soak"
@@ -66,6 +70,7 @@ formatEyes = (eyes, difficulty) ->
 reset = ->
   $(".result").html("")
   $("#result").html("")
+  $("#additional-pool").html("")
 
 $("#trigger").click (event) ->
   reset()
