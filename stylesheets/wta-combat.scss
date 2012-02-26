@@ -1,3 +1,29 @@
+p.result {
+  height: 1.5em;
+  margin-left: 1em;
+}
+
 ol {
-  list-style: none;
+  list-style: disc;
+}
+
+#result strong {
+  color: red;
+}
+
+strong {
+  font-weight: bold;
+  &.one-eye {
+    color: red;
+  }
+  &.botch {
+    color: red;
+    margin-right: 0.5em;
+  }
+}
+
+input[type="number"] {
+  width: 3em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }

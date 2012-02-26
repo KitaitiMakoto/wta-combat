@@ -4,6 +4,12 @@
 <h1>W:tA Combat</h1>
 
 <form>
+<p>
+  <input type="button" value="Combat!" id="trigger">
+  <input type="reset" value="Reset">
+  <span id="result"></span>
+</p>
+
 <ol id="combat-table">
   <li id="attack">
     Attack
@@ -16,7 +22,7 @@
   <li id="defense">
     Defense
     (<label>Dicepool<input type="number" name="dicepool" value="6" min="1" max="10"></label>
-    <label>Difficulty<input type="number" name="difficluty" value="6" min="1" max="10"></label>
+    <label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label>
     <label><input type="checkbox" name="specialty">Specialty</label>
     <label><input type="checkbox" name="willpower">Willpower</label>)
     <p class="result"></p>
@@ -34,12 +40,7 @@
     <p class="result"></p>
   </li>
 </ol>
-
-<input type="button" value="Combat!" id="trigger">
-<input type="reset" value="Reset">
 </form>
-
-<p id="result"></p>
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/wta-roll.js"></script>

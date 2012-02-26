@@ -18,9 +18,9 @@ hit = ->
       else
         res.successes += 1
     texts = []
-    texts.push "<strong>Botch!</strong>" if res.botch and not successPurchased
+    texts.push '<strong class="botch">Botch!</strong>' if res.botch and not successPurchased
     texts.push "#{res.successes} successes"
-    texts.push "[#{eyes}]" for eyes in res.eyes
+    texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
     texts.push "(Willpower exausted)" if successPurchased
 
     $li.find(".result").html texts.join(" ")
@@ -45,12 +45,23 @@ calcDamage = (additionalPool, defenseBotched = false) ->
     res = roll(dp, dif, doReroll)
     texts = []
     texts.push "#{res.successes} successes"
-    texts.push "[#{eyes}]" for eyes in res.eyes
+    texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
 
     damage += res.successes if $li.attr("id") is "damage"
     damage -= res.successes if $li.attr("id") is "soak"
     $li.find(".result").html texts.join(" ")
   damage
+
+formatEyes = (eyes, difficulty) ->
+  marked = []
+  for eye in eyes
+    if eye is 1
+      marked.push '<strong class="one-eye">1</strong>'
+    else if eye >= difficulty
+      marked.push "<strong>#{eye}</strong>"
+    else
+      marked.push "#{eye}"
+  "[#{marked.join(', ')}]"
 
 $("#trigger").click (event) ->
   $(".result").html("")
@@ -63,4 +74,4 @@ $("#trigger").click (event) ->
     if damage <= 0
       $("#result").html("Attack soaked totally")
     else
-      $("#result").html("Attack successed with #{damage} damages!")
+      $("#result").html("Attack successed with <strong>#{damage}</strong> damages!")
