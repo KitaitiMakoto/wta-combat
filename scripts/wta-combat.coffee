@@ -83,7 +83,7 @@ $("#trigger").click (event) ->
   else
     damage = calcDamage(hitResult.additionalPool, hitResult.defenseBotched)
     if damage <= 0
-      $("#result").html("Attack soaked totally")
+      $("#result").html("Attack totally soaked")
     else
       $("#result").html("Attack successed with <strong>#{damage}</strong> damages!")
 
