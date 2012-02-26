@@ -25,10 +25,11 @@ hit = ->
 
     $li.find(".result").html texts.join(" ")
     result.additionalPool += res.successes if $li.attr("id") is "attack"
-    if res.botch
-      result.defenseBotched = true
-    else if $li.attr("id") is "defense"
-      result.additionalPool -= (res.successes + 1)
+    if $li.attr("id") is "defense"
+      if res.botch
+        result.defenseBotched = true
+      else
+        result.additionalPool -= (res.successes + 1)
 
   result
 
