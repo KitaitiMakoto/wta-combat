@@ -1,5 +1,3 @@
-exports = this
-
 hit = ->
   result = {
     additionalPool: 0,
