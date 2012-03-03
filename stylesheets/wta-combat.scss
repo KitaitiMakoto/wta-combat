@@ -1,3 +1,13 @@
+#control {
+  input {
+    margin-top: 3em;
+  }
+}
+
+#result strong {
+  color: red;
+}
+
 p.result {
   height: 1.5em;
   margin-left: 1em;
@@ -5,10 +15,6 @@ p.result {
 
 ol {
   list-style: disc;
-}
-
-#result strong {
-  color: red;
 }
 
 strong {
@@ -26,4 +32,26 @@ input[type="number"] {
   width: 3em;
   margin-left: 0.5em;
   margin-right: 0.5em;
+}
+
+ol > li {
+  position: relative;
+  height: 7em;
+  margin-bottom: 1em;
+}
+
+.result {
+  position: absolute;
+       top: 0;
+      left: 10em;
+}
+
+li ul {
+  margin-left: 0;
+  padding-left: 0.5em;;
+  list-style: none;
+}
+
+.number {
+  font-size: 4em;
 }

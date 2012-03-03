@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <title>W:tA Combat</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/wta-combat.css">
 <h1>W:tA Combat</h1>
 
 <form>
-<p>
+<p id="control">
   <input type="button" value="Combat!" id="trigger">
   <input type="reset" value="Reset">
   <span id="result"></span>
@@ -13,44 +14,49 @@
 <ol id="combat-table">
   <li id="attack">
     Attack
-    (<label>Dicepool<input type="number" name="dicepool" value="6" min="1" max="10"></label>
-    <label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label>
-    <label><input type="checkbox" name="specialty" checked>Specialty</label>
-    <label><input type="checkbox" name="willpower">Willpower</label>)
+    <ul>
+      <li><label>Dicepool<input type="number" name="dicepool" value="6" min="1"></label></li>
+      <li><label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label></li>
+      <li><label><input type="checkbox" name="specialty" checked>Specialty</label></li>
+      <li><label><input type="checkbox" name="willpower">Willpower</label></li>
+    </ul>
     <p class="result"></p>
   </li>
   <li id="defense">
     Defense
-    (<label>Dicepool<input type="number" name="dicepool" value="6" min="1" max="10"></label>
-    <label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label>
-    <label><input type="checkbox" name="specialty">Specialty</label>
-    <label><input type="checkbox" name="willpower">Willpower</label>)
+    <ul>
+      <li><label>Dicepool<input type="number" name="dicepool" value="6" min="1"></label></li>
+      <li><label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label></li>
+      <li><label><input type="checkbox" name="specialty">Specialty</label></li>
+      <li><label><input type="checkbox" name="willpower">Willpower</label></li>
+    </ul>
     <p class="result"></p>
   </li>
   <li id="damage">
     Damage
-    (<label>Dicepool<input type="number" name="dicepool" value="6" min="1" max="10"></label>
-    <label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label>)
+    <ul>
+      <li><label>Dicepool<input type="number" name="dicepool" value="6" min="1"></label></li>
+      <li><label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label></li>
+    </ul>
     <p class="result"></p>
   </li>
   <li id="soak">
     Soak
-    (<label>Dicepool<input type="number" name="dicepool" value="6" min="1" max="10"></label>
-    <label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10" disabled></label>)
+    <ul>
+      <li><label>Dicepool<input type="number" name="dicepool" value="6" min="1"></label></li>
+      <li><label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10" readonly></label></li>
+    </ul>
     <p class="result"></p>
   </li>
 </ol>
 </form>
 
-<h2>Known Issues</h2>
+<h2>Issues</h2>
 <ul>
-  <li>Defending character cannot decide wheher uses Willpower after seeing the result of attack</li>
-</ul>
-
-<h2>Required Considerations</h2>
-<ul>
-  <li>When defense botched, could defending character roll to soak? Currently, no.</li>
-  <li>When defense botched, how many dicepool will be added to damage roll? Currently, equal to successes of attack(not subtracted one die)</li>
+  <li>UI、UXが悪い。</li>
+  <li>防御側のキャラクターが、攻撃側の結果を見てから&lt;意志力&gt;を消費するかどうか決められない。</li>
+  <li>防御が大失敗した時、防御側キャラクターはダメージ減少判定できるんでしたっけ？　今はできないということにしています。</li>
+  <li>防御が大失敗した時、ダメージ判定のダイスプールはどうなるんでしたっけ？　今は攻撃判定の成功数がそのまま足されています。</li>
 </ul>
 
 <script type="text/javascript" src="scripts/jquery.js"></script>

@@ -19,7 +19,7 @@ hit = ->
         res.successes += 1
     texts = []
     texts.push '<strong class="botch">Botch!</strong>' if res.botch and not successPurchased
-    texts.push "#{res.successes} successes"
+    texts.push "<span class=\"successes\"><span class=\"number\">#{res.successes}</span> successes</span><br>"
     texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
     texts.push "(Willpower exausted)" if successPurchased
 
@@ -49,10 +49,10 @@ calcDamage = (additionalPool, defenseBotched = false) ->
     doReroll = false
     res = roll(dp, dif, doReroll)
     texts = []
-    texts.push "#{res.successes} successes"
+    texts.push "<span class=\"number\">#{res.successes}</span> successes<br>"
     texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
     if attacking and additionalPool > 0
-      texts.push "(<strong>#{additionalPool}</strong> dice enhanced)"
+      texts.push "<br>(<strong>#{additionalPool}</strong> dice enhanced)"
 
     damage += res.successes if $li.attr("id") is "damage"
     damage -= res.successes if $li.attr("id") is "soak"
@@ -85,7 +85,7 @@ $("#trigger").click (event) ->
     if damage <= 0
       $("#result").html("Attack totally soaked")
     else
-      $("#result").html("Attack successed with <strong>#{damage}</strong> damages!")
+      $("#result").html("Attack successed with <strong class=\"number\">#{damage}</strong> damages!")
 
 $('input[type="reset"]').click (event) ->
   reset()
