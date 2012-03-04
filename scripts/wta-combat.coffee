@@ -97,3 +97,16 @@ $("#trigger").click (event) ->
 
 $('input[type="reset"]').click (event) ->
   reset()
+
+$defWill = $("#defense input[name=\"willpower\"]")
+$soakWill = $("#soak input[name=\"willpower\"]")
+$defWill.change (event) ->
+  if $defWill.attr("checked")
+    $soakWill.attr("disabled", true)
+  else
+    $soakWill.attr("disabled", false)
+$soakWill.change (event) ->
+  if $soakWill.attr("checked")
+    $defWill.attr("disabled", true)
+  else
+    $defWill.attr("disabled", false)
