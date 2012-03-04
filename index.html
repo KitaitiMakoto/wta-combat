@@ -53,23 +53,22 @@
 
 <h2>Issues</h2>
 <ul>
-  <li>UI、UXが悪い。誰か！　助けて！</li>
+  <li>UI、UXが悪い。</li>
   <li>防御側のキャラクターが、攻撃側の結果を見てから&lt;意志力&gt;を消費するかどうか決められない。</li>
   <li>防御が大失敗した時、防御側キャラクターはダメージ減少判定できるんでしたっけ？　今はできないということにしています。</li>
   <li>防御が大失敗した時、ダメージ判定のダイスプールはどうなるんでしたっけ？　今は攻撃判定の成功数がそのまま足されています。</li>
 </ul>
 
-<script type="text/template" id="dice-result">
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/mustache.js"></script>
+<script type="text/javascript" src="scripts/wta-roll.js"></script>
+<script type="text/javascript" src="scripts/wta-combat.js"></script>
+<script type="text/template" id="roll-result">
   {{#botch}}{{^successPurchased}}
   <strong class="botch">Botch!</strong>
   {{/successPurchased}}{{/botch}}
   <span class="successes"><span class="number">{{successes}}</span> successes</span><br>
   {{#formattedEyes}}{{{.}}}{{/formattedEyes}}
   {{#successPurchased}}(Willpower spent){{/successPurchased}}
+  {{#additionalPool}}({{additionalPool}} dice enhanced){{/additionalPool}}
 </script>
-
-<script type="text/javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" src="scripts/mustache.js"></script>
-<script type="text/javascript" src="scripts/wta-roll.js"></script>
-<script type="text/javascript" src="scripts/wta-combat.js"></script>
- 

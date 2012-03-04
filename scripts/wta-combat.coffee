@@ -23,7 +23,7 @@ hit = ->
       successPurchased: successPurchased
       successes: res.successes
       formattedEyes: formatEyes(eyes, dif) for eyes in res.eyes
-    $(".result", $li).html Mustache.render($("#dice-result").html(), view)
+    $(".result", $li).html Mustache.render($("#roll-result").html(), view)
 
     result.additionalPool += res.successes if $li.attr("id") is "attack"
     if $li.attr("id") is "defense"
@@ -49,15 +49,15 @@ calcDamage = (additionalPool, defenseBotched = false) ->
     dif = $li.find('[name="difficulty"]').val()
     doReroll = false
     res = roll(dp, dif, doReroll)
-    texts = []
-    texts.push "<span class=\"number\">#{res.successes}</span> successes<br>"
-    texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
-    if attacking and additionalPool > 0
-      texts.push "<br>(<strong>#{additionalPool}</strong> dice enhanced)"
+
+    view =
+      successes: res.successes
+      formattedEyes: formatEyes(eyes, dif) for eyes in res.eyes
+      additionalPool: if attacking && (additionalPool > 0) then additionalPool else null
+    $(".result", $li).html Mustache.render($("#roll-result").html(),view)
 
     damage += res.successes if $li.attr("id") is "damage"
     damage -= res.successes if $li.attr("id") is "soak"
-    $li.find(".result").html texts.join(" ")
   damage
 
 formatEyes = (eyes, difficulty) ->
