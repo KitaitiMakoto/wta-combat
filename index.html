@@ -45,6 +45,7 @@
     <ul>
       <li><label>Dicepool<input type="number" name="dicepool" value="6" min="1"></label></li>
       <li><label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10" readonly></label></li>
+      <li><label><input type="checkbox" name="willpower">Willpower</label></li>
     </ul>
     <p class="result"></p>
   </li>
@@ -57,6 +58,12 @@
   <li>防御側のキャラクターが、攻撃側の結果を見てから&lt;意志力&gt;を消費するかどうか決められない。</li>
   <li>防御が大失敗した時、防御側キャラクターはダメージ減少判定できるんでしたっけ？　今はできないということにしています。</li>
   <li>防御が大失敗した時、ダメージ判定のダイスプールはどうなるんでしたっけ？　今は攻撃判定の成功数がそのまま足されています。</li>
+</ul>
+
+<h2></h2>
+<ul>
+  <li>&lt;意志力&gt;消費は一ターンに一点まで。</li>
+  <li>防御しなかった時の扱い。</li>
 </ul>
 
 <script type="text/javascript" src="scripts/jquery.js"></script>

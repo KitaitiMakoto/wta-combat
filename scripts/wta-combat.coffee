@@ -1,8 +1,7 @@
 hit = ->
-  result = {
+  result =
     additionalPool: 0,
     defenseBotched: false
-  }
   $("#attack, #defense").each (index) ->
     $li = $(this)
     dp = $li.find('[name="dicepool"]').val()
@@ -50,7 +49,15 @@ calcDamage = (additionalPool, defenseBotched = false) ->
     doReroll = false
     res = roll(dp, dif, doReroll)
 
+    successPurchased = $li.find('[name="willpower"]').attr("checked")
+    if successPurchased
+      if res.successes <= 0
+        res.successes = 1
+      else
+        res.successes += 1
+
     view =
+      successPurchased: successPurchased
       successes: res.successes
       formattedEyes: formatEyes(eyes, dif) for eyes in res.eyes
       additionalPool: if attacking && (additionalPool > 0) then additionalPool else null
