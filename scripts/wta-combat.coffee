@@ -17,13 +17,14 @@ hit = ->
         res.successes = 1
       else
         res.successes += 1
-    texts = []
-    texts.push '<strong class="botch">Botch!</strong>' if res.botch and not successPurchased
-    texts.push "<span class=\"successes\"><span class=\"number\">#{res.successes}</span> successes</span><br>"
-    texts.push "#{formatEyes(eyes, dif)}" for eyes in res.eyes
-    texts.push "(Willpower exausted)" if successPurchased
 
-    $li.find(".result").html texts.join(" ")
+    view =
+      botch: res.botch
+      successPurchased: successPurchased
+      successes: res.successes
+      formattedEyes: formatEyes(eyes, dif) for eyes in res.eyes
+    $(".result", $li).html Mustache.render($("#dice-result").html(), view)
+
     result.additionalPool += res.successes if $li.attr("id") is "attack"
     if $li.attr("id") is "defense"
       if res.botch
