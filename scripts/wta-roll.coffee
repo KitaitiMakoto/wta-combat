@@ -10,6 +10,7 @@ exports.roll = (dicePool, difficulty = 6, doReroll = false) ->
     eyes: []
     successes: 0
     botch: false
+  return result if dicePool <= 0
 
   eyes = (Die.roll(10) for [1..dicePool])
   result.eyes.push eyes
