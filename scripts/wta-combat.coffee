@@ -2,6 +2,7 @@ hit = ->
   result =
     additionalPool: 0,
     defenseBotched: false
+
   $("#attack, #defense").each (index) ->
     $li = $(this)
     dp = $li.find('[name="dicepool"]').val()
@@ -24,7 +25,11 @@ hit = ->
       formattedEyes: formatEyes(eyes, dif) for eyes in res.eyes
     $(".result", $li).html Mustache.render($("#roll-result").html(), view)
 
-    result.additionalPool += res.successes if $li.attr("id") is "attack"
+    if $li.attr("id") is "attack"
+      if res.successes <= 0
+        result.additionalPool = -1
+      else
+        result.additionalPool += res.successes
     if $li.attr("id") is "defense"
       if res.botch
         result.defenseBotched = true
