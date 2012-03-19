@@ -98,7 +98,7 @@ $("#trigger").click (event) ->
     if damage <= 0
       $("#result").html("Attack totally soaked")
     else
-      $("#result").html("Attack successed with <strong class=\"number\">#{damage}</strong> damages!")
+      $("#result").html("Attack succeeded with <strong class=\"number\">#{damage}</strong> damages!")
 
 $('input[type="reset"]').click (event) ->
   reset()
