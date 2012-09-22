@@ -4,3 +4,4 @@
 *.js
 !scripts/jquery.js
 !scripts/mustache.js
+Rakefile
