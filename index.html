@@ -5,6 +5,18 @@
 <link rel="stylesheet" type="text/css" href="stylesheets/wta-combat.css">
 <h1>W:tA Combat</h1>
 
+<form id="diceroll">
+  <p>Diceroll</p>
+  <input type="submit" value="Roll">
+  <ul>
+    <li><label>Dicepool<input type="number" name="dicepool" value="6" min="0"></label></li>
+    <li><label>Difficulty<input type="number" name="difficulty" value="6" min="1" max="10"></label></li>
+    <li><label><input type="checkbox" name="specialty">Specialty</label></li>
+    <li><label><input type="checkbox" name="willpower">Willpower</label></li>
+  </ul>
+  <p class="result"></p>
+</form>
+
 <form>
 <p id="control">
   <input type="button" value="Combat!" id="trigger">

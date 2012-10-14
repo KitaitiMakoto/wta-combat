@@ -88,6 +88,31 @@ reset = ->
   $("#result").html("")
   $("#additional-pool").html("")
 
+$("#diceroll input[type='submit']").click (event) ->
+  event.preventDefault()
+  $container = $("#diceroll")
+  $resultArea = $(".result", $container)
+  $resultArea.html("")
+  dp = $('input[name="dicepool"]').val()
+  dif = $('input[name="difficulty"]', $container).val()
+  doReroll = $('[name="specialty"]').attr("checked")
+  $(".result", $container).html("roll")
+  res = roll(dp, dif, doReroll)
+  successPurchased = $('[name="willpower"]', $container).attr("checked")
+  if successPurchased
+    res.botch = false
+    if res.successes <= 0
+      res.successes = 1
+    else
+      res.successes += 1
+  view =
+    botch: res.botch
+    successPurchased: successPurchased
+    successes: res.successes
+    formattedEyes: formatEyes(eyes, dif) for eyes in res.eyes
+  $resultArea.html Mustache.render($("#roll-result").html(), view)
+  console.log res
+
 $("#trigger").click (event) ->
   reset()
   hitResult = hit()
