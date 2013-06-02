@@ -1,5 +1,20 @@
 exports = this
 
+Roll = Backbone.Model.extend {
+    defaults: ->
+      {number: 10, difficulty: 6, result: null}
+    roll: ->
+      result = Math.floor(Math.random() * @get("number") + 1)
+      @set "result", result
+      result
+  }
+exports.Roll = Roll
+
+RollCollection = Backbone.Collection.extend {
+    model: Roll
+  }
+exports.RollCollection = RollCollection
+
 class Die
   @roll: (number) ->
      Math.floor(Math.random() * number + 1)
