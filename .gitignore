@@ -1,7 +1,5 @@
 *~
 .sass-cache
 *.css
-*.js
-!scripts/jquery.js
-!scripts/mustache.js
-Rakefile
+scripts/*.js
+components/*
